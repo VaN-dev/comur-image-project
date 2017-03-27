@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_bootstrap': false} %}
+
+    <h1>new article</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.title) }}
+
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{% endblock %}
+
