@@ -15,3 +15,7 @@ comur_api_image_library:
     defaults: {_controller: "ComurImageBundle:Upload:getLibraryImages"}
     options:
         expose: true
+
+comur_fetch_from_url:
+    path: /fetch-from-url
+    defaults: {_controller: "ComurImageBundle:Upload:fetchFromUrl"}

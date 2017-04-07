@@ -14,7 +14,8 @@
 <script src="{{ asset('bundles/comurimage/js/jquery.Jcrop.min.js') }}"></script>
 <script src="{{ asset('bundles/comurimage/js/jquery.color.js') }}"></script>
 {% if include_holder is not defined or include_holder %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.5.2/holder.min.js"></script>
+    {#<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.5.2/holder.min.js"></script>#}
+    <script src="{{ asset('assets/holder/holder.min.js') }}"></script>
 {% endif %}
 {% if include_bootstrap is not defined or include_bootstrap %}
     <script src="{{ asset('bundles/comurimage/js/bootstrap.min.js') }}"></script>
@@ -57,9 +58,14 @@
                 <div class="tab-content">
                     <!-- FROM URL -->
                     <div class="tab-pane active" id="from-url">
-                        <div class="form-group">
-                            <input type="text" name="url" class="form-control">
-                        </div>
+                        <form method="post" id="from-url-form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="url" class="form-control">
+                                    <button type="submit" class="btn tn-default">submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <!-- UPLOAD IMAGE -->
                     <div class="tab-pane" id="upload-image">
@@ -117,5 +123,14 @@
 <script>
     $('#image_upload_modal').on({
         'hidden.bs.modal': destroyImageManager
+    });
+
+    $(document).on('submit', '#from-url-form', function(e) {
+        e.preventDefault();
+        var data = $(this).serialize();
+        $.post('{{ path('comur_fetch_from_url') }}', data)
+            .success(function(response) {
+                console.log(response);
+            });
     });
 </script>

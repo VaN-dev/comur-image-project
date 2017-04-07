@@ -355,4 +355,20 @@ class UploadController extends Controller
         
         $writeFunc($dstR,$destSrc,$imageQuality);
     }
+
+    public function fetchFromUrlAction(Request $request)
+    {
+//        dump($request);
+//        die();
+        $url = $request->request->get('url');
+
+        $img = 'uploads/test.png';
+
+        $data = file_put_contents($img, file_get_contents($url));
+
+        dump($data);
+        die();
+
+        return new Response($url);
+    }
 }

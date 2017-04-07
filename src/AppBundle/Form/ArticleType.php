@@ -29,8 +29,8 @@ class ArticleType extends AbstractType
                     'generateFilename' => true			//optional
                 ),
                 'cropConfig' => array(
-                    'minWidth' => 588,
-                    'minHeight' => 300,
+//                    'minWidth' => 588,
+//                    'minHeight' => 300,
                     'aspectRatio' => true, 				//optional
                     'cropRoute' => 'comur_api_crop', 	//optional
                     'forceResize' => false, 			//optional

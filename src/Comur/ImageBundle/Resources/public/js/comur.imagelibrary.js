@@ -99,6 +99,14 @@ function initializeImageManager(id, options){
     });
     // $('#'+id+'_image_crop span').click(initJCrop_{{id}});
     // $('#'+id+'_image_crop_go_cancel').click(destroyJCrop);
+
+    // from-url form
+    var from_url_form = $('#from-url-form');
+
+    $(document).on('submit', '#from-url-form', function(e) {
+        console.log('submit');
+        return false;
+    });
 }
 
 function destroyImageManager(){
